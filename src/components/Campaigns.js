@@ -2,21 +2,21 @@ import React,{useState,useEffect} from "react";
 import Slider from "react-slick";
 import Banners from "./../api/banners.json";
 import Title from "./ui/Title";
+import {IoIosArrowBack,IoIosArrowForward} from 'react-icons/io';
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return <button className={className} style={style} onClick={onClick}></button>
+function NextButton ({ onClick, className }) {
+	return (
+		<button className={`${className} !text-purple-700`} onClick={onClick}>
+			<IoIosArrowForward size={22} />
+		</button>
+	)
 }
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "green" }}
-      onClick={onClick}
-    />
-  );
+function PrevButton ({ onClick, className }) {
+	return (
+		<button className={`${className} !text-purple-700`} onClick={onClick}>
+			<IoIosArrowBack size={22} />
+		</button>
+	)
 }
 
 
@@ -32,13 +32,14 @@ export default function Campaigns() {
     dots: false,
     infinite: true,
     speed: 500,
-    arrows: false,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     speed: 500,
     autoplaySpeed: 3500,
     cssEase: "linear",
+    nextArrow:<NextButton />,
+    prevArrow:<PrevButton />
   };
 
   return (
